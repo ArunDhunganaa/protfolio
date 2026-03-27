@@ -1,7 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import 'tailwindcss';
 @import 'swiper/css';
+@import 'swiper/css/pagination';
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* @theme{
+@theme {
+  --font-opensans: 'Open Sans', sans-serif;
+  --font-playfairDisplay: 'Playfair Display', serif;
+  /* Light mode */
+  --color-bg: #ffffff;
+  --color-surface: #f8fafc;
+  --color-primary: #4f46e5;
+  --color-accent: #22c55e;
+  --color-text: #020617;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
 
+  /* Dark mode */
+  --color-dark-bg: #020617;
+  --color-dark-surface: #0f172a;
+  --color-dark-primary: #818cf8;
+  --color-dark-accent: #22c55e;
+  --color-dark-text: #f8fafc;
+  --color-dark-muted: #94a3b8;
+  --color-dark-border: #1e293b;
+
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 2rem; /* 32px */
+  --text-4xl: 2.5rem; /* 40px */
+  --text-5xl: 3rem; /* 48px */
+  --text-6xl: 3.5rem;
+
+  --shadow-blue: 0 0 10px 10px rgb(79 70 229 / 0.3);
+
+  --animate-marquee: marquee 20s linear infinite;
+  @keyframes marquee {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  --animate-marquee-reverse: marquee-reverse 20s linear infinite;
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  body {
+    @apply font-opensans bg-bg text-text antialiased;
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfairDisplay text-text leading-tight font-semibold;
+  }
+
+  p {
+    @apply text-text leading-relaxed;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 1330px;
+  }
+}
+
+/* .time-wrapper {
+  color: dodgerblue;
+}
+circle {
+  stroke-dasharray: 1255 10;
+  stroke-dashoffset: 200;
+  animation: 2s anime linear infinite; */
+/* It keeps the element in the final state of the animation after it finishes. */
+/* }
+@keyframes anime {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 1256;
+  }
 } */

@@ -1,4 +1,7 @@
+import { useRef } from 'react';
 export default function Comment() {
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
   return (
     <section className="py-16">
       <div className="mx-auto max-w-2xl px-4">
@@ -6,16 +9,19 @@ export default function Comment() {
 
         <form className="mb-10 space-y-4">
           <input
+            ref={nameRef}
+            title="name"
+            name="name"
             type="text"
             placeholder="Your name"
             className="w-full rounded-lg border border-gray-300 p-3"
-            value=""
           />
-
           <textarea
+            title="message"
+            ref={messageRef}
+            name="message"
             placeholder="Your message"
             className="min-h-30 w-full rounded-lg border border-gray-300 p-3"
-            value=""
           />
 
           <button
@@ -26,8 +32,7 @@ export default function Comment() {
           </button>
         </form>
 
-        {/* Comments */}
-        <div className="space-y-6">
+        {/* <div className="space-y-6">
           <div className="flex gap-4 rounded-xl border border-gray-200 p-4">
             <img src="" alt="" className="h-12 w-12 rounded-full" />
             <div>
@@ -35,7 +40,7 @@ export default function Comment() {
               <p className="text-gray-700">Message</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
