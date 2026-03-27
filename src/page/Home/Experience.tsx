@@ -86,7 +86,7 @@ export default function Experience() {
 
       {/* ── Mobile: clean vertical timeline, no GSAP ── */}
       <section className="experience px-6 py-16 md:hidden">
-        <h2 className="mb-12 text-center text-4xl font-bold">
+        <h2 className="mb-12 text-center text-xl font-bold lg:text-4xl">
           Education/Experience
         </h2>
 
