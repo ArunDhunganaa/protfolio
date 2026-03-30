@@ -62,24 +62,47 @@ export default function Skill() {
   }, []);
 
   const skills = [
-    { icon: wordpress_l, img: wordpress, title: 'WordPress' },
-    { icon: react_l, img: react, title: 'React' },
-    { icon: html_sass_l, img: html_sass, title: 'HTML & Sass' },
-    { icon: webflow_l, img: webflow, title: 'Webflow' },
-    { icon: drupal_l, img: drupal, title: 'Drupal CMS' },
+    {
+      icon: wordpress_l,
+      img: wordpress,
+      title: 'WordPress',
+      desc: 'Skilled in developing custom WordPress themes, modifying plugins, and building responsive CMS-driven websites. Experienced with Elementor, ACF, performance optimization, and SEO-friendly structures.',
+    },
+    {
+      icon: react_l,
+      img: react,
+      title: 'React',
+      desc: 'Experienced in building modern React applications with reusable components, hooks, and state management. Comfortable integrating APIs, animations with GSAP, and responsive UI using Tailwind.',
+    },
+    {
+      icon: html_sass_l,
+      img: html_sass,
+      title: 'HTML & Sass',
+      desc: 'Strong foundation in semantic HTML and scalable Sass architecture. Able to create pixel-perfect responsive layouts, reusable mixins, and maintainable component-based styling systems.',
+    },
+    {
+      icon: webflow_l,
+      img: webflow,
+      title: 'Webflow',
+      desc: 'Skilled in building custom Webflow templates with CMS collections, interactions, and responsive layouts. Able to convert Figma designs into clean, structured Webflow builds.',
+    },
+    {
+      icon: drupal_l,
+      img: drupal,
+      title: 'Drupal CMS',
+      desc: 'Experience working with Drupal themes, Twig templates, and structured content types. Comfortable customizing layouts and maintaining scalable CMS-driven platforms.',
+    },
   ];
 
   return (
     <section ref={sectionRef} className="skill relative mt-12 md:mt-20">
       <div className="container mx-auto flex flex-col items-start md:flex-row">
-        {/* Left: skill list */}
         <div className="w-full md:w-1/2 md:pr-12">
           {skills.map((s, i) => (
             <div
               key={i}
-              className="skill-item flex flex-col justify-center py-12 md:min-h-[80vh] md:py-0"
+              className="skill-item mb-12 flex flex-col justify-center md:mb-0 md:min-h-[80vh]"
             >
-              {/* Mobile-only inline image */}
               <div className="mb-6 aspect-video w-full overflow-hidden rounded-xl shadow-lg md:hidden">
                 <img
                   src={s.img}
@@ -91,19 +114,16 @@ export default function Skill() {
               <img
                 alt={s.title}
                 src={s.icon}
-                className="mb-4 h-14 w-14 object-contain md:mb-6 md:h-20 md:w-20"
+                className="mb-4 h-8 w-fit object-contain md:mb-6 md:h-12"
               />
               <h3 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl">
                 {s.title}
               </h3>
-              <p className="leading-relaxed text-gray-500">
-                Your descriptive text goes here...
-              </p>
+              <p className="leading-relaxed text-gray-500">{s.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Right: pinned image panel — desktop only */}
         <div
           ref={pinContainerRef}
           className="hidden w-1/2 items-center justify-center md:flex"

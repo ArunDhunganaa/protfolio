@@ -1,9 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 import gsap from '../../lib/gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const sections = [
   { color: '#ff6b6b', text: 'Section 1' },

@@ -45,15 +45,13 @@ export default function Counter() {
       </h2>
 
       <div className="container flex flex-1 flex-col items-center gap-6 px-4 py-8 sm:gap-10 sm:py-12 md:py-20">
-        {/* Count display */}
         <div className="relative flex flex-col items-center">
           <div className="bg-dark-primary/5 pointer-events-none absolute inset-0 scale-150 rounded-full blur-3xl" />
           <p className="text-dark-muted mb-2 text-xs font-bold tracking-widest uppercase sm:mb-4">
             Current Count
           </p>
           <span
-            className={`font-bold transition-all duration-300 ${countColor}`}
-            style={{ fontSize: 'clamp(4rem, 20vw, 9rem)', lineHeight: 1 }}
+            className={`text-4xl font-bold transition-all duration-300 md:text-6xl ${countColor}`}
           >
             {count}
           </span>
@@ -68,7 +66,6 @@ export default function Counter() {
           )}
         </div>
 
-        {/* Step buttons */}
         <div className="flex w-full max-w-xs flex-wrap items-center justify-center gap-2 sm:max-w-none sm:gap-3">
           {([-10, -5, -1] as number[]).map((n) => (
             <button
@@ -98,7 +95,6 @@ export default function Counter() {
           ))}
         </div>
 
-        {/* Large +/- buttons */}
         <div className="flex gap-4 sm:gap-6">
           <button
             onClick={() => change(-1)}
@@ -114,7 +110,6 @@ export default function Counter() {
           </button>
         </div>
 
-        {/* History */}
         {history.length > 0 && (
           <div className="w-full max-w-xs sm:max-w-sm">
             <p className="mb-2 text-xs font-bold tracking-widest uppercase sm:mb-3">

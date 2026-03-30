@@ -56,7 +56,6 @@ export default function Experience() {
 
   return (
     <>
-      {/* ── Desktop: whole section is pinned so heading + timeline move together ── */}
       <section
         ref={sectionRef}
         className="experience hidden overflow-hidden md:block"
@@ -84,24 +83,19 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* ── Mobile: clean vertical timeline, no GSAP ── */}
       <section className="experience px-6 py-16 md:hidden">
         <h2 className="mb-12 text-center text-xl font-bold lg:text-4xl">
           Education/Experience
         </h2>
 
         <ol className="relative mx-auto flex max-w-sm flex-col">
-          {/* Vertical connector line — inset so it doesn't run off edges */}
           <div className="absolute top-4 bottom-4 left-4 w-0.5 bg-gray-300" />
 
           {items.map((item, index) => (
             <li key={index} className="relative mb-10 flex gap-5 last:mb-0">
-              {/* Dot */}
               <div className="relative z-10 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-black bg-white">
                 <div className="h-2 w-2 rounded-full bg-black" />
               </div>
-
-              {/* Content */}
               <div className="pt-0.5">
                 <p className="font-mono text-xs font-medium tracking-wide text-gray-400 uppercase">
                   {item.year}

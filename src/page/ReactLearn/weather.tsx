@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const API_KEY = 'bb81e9d6aa7f74c5a722ff04b1756215';
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API;
 
 type Unit = 'metric' | 'imperial';
 
@@ -129,7 +129,6 @@ export default function Weather() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      {/* Header */}
       <header className="border-b bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-2xl items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
@@ -148,7 +147,6 @@ export default function Weather() {
 
       <main className="mx-auto max-w-2xl px-4 py-6 md:py-10">
         <div className="flex flex-col gap-6">
-          {/* Search Bar */}
           <div className="flex gap-2">
             <input
               className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -166,7 +164,6 @@ export default function Weather() {
             </button>
           </div>
 
-          {/* Quick Filters */}
           <div className="flex flex-wrap gap-2">
             {POPULAR_CITIES.map((c) => (
               <button
@@ -201,9 +198,8 @@ export default function Weather() {
 
           {weather && !loading && (
             <div
-              className={`bg-gradient-to-br ${bg} overflow-hidden rounded-3xl border border-gray-200 shadow-sm`}
+              className={`bg-linear-to-br ${bg} overflow-hidden rounded-3xl border border-gray-200 shadow-sm`}
             >
-              {/* Main Weather Info */}
               <div className="flex flex-col justify-between gap-6 p-6 sm:flex-row sm:items-center md:p-8">
                 <div>
                   <p className="mb-1 text-xs font-bold tracking-widest text-gray-500 uppercase opacity-70">
@@ -231,7 +227,6 @@ export default function Weather() {
                 </div>
               </div>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-3 px-6 pb-6 md:grid-cols-4 md:px-8 md:pb-8">
                 <StatCard
                   label="Humidity"
@@ -259,7 +254,6 @@ export default function Weather() {
                 />
               </div>
 
-              {/* Footer Bar */}
               <div className="flex flex-wrap gap-4 border-t border-gray-200/50 bg-white/30 px-6 py-4 text-sm md:px-8">
                 <span className="text-gray-600">
                   High{' '}

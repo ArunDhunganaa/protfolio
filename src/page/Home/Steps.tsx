@@ -30,7 +30,6 @@ export default function Steps() {
   return (
     <section className="step bg-gray-100 py-16">
       <div className="container mx-auto px-6">
-        {/* ── Desktop: horizontal chevrons ── */}
         <div className="hidden items-start md:flex">
           {steps.map((step, index) => (
             <div
@@ -62,11 +61,9 @@ export default function Steps() {
           ))}
         </div>
 
-        {/* ── Mobile: vertical list ── */}
         <ol className="flex flex-col gap-0 md:hidden">
           {steps.map((step, index) => (
             <li key={step.id} className="flex gap-4">
-              {/* Left: number + connector line */}
               <div className="flex flex-col items-center">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600">
                   <span className="text-base font-bold text-white">
@@ -77,8 +74,6 @@ export default function Steps() {
                   <div className="my-1 w-0.5 flex-1 bg-blue-200" />
                 )}
               </div>
-
-              {/* Right: text */}
               <div className="pt-1.5 pb-8">
                 <p className="text-base font-semibold text-gray-700">
                   {step.text}

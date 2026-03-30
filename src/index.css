@@ -91,24 +91,6 @@
     max-width: 1330px;
   }
 }
-
-/* .time-wrapper {
-  color: dodgerblue;
+html {
+  scroll-behavior: smooth;
 }
-circle {
-  stroke-dasharray: 1255 10;
-  stroke-dashoffset: 200;
-  animation: 2s anime linear infinite; */
-/* It keeps the element in the final state of the animation after it finishes. */
-/* }
-@keyframes anime {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dashoffset: 200;
-  }
-  100% {
-    stroke-dashoffset: 1256;
-  }
-} */

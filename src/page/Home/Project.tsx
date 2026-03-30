@@ -14,28 +14,28 @@ export default function Project() {
 
   const projects = [
     {
-      title: 'Corporate CMS',
-      desc: 'A content-driven corporate website built with enterprise-grade security and custom modules.',
-      skills: ['WordPress', 'Sass'],
-      color: 'from-blue-500/20',
+      title: 'Template Serenite',
+      desc: 'Custom Webflow template built with responsive layout, reusable components, and smooth interactions.',
+      skills: ['Webflow', 'CMS'],
+      color: 'from-cyan-500/20',
       img: corporate_cms,
-      link: '#',
+      link: 'https://serenite-d07c4f.webflow.io/',
     },
     {
-      title: 'E-Commerce Platform',
-      desc: 'Online store with custom cart logic and real-time inventory.',
+      title: 'SmartFunds',
+      desc: 'Drupal-based financial platform with structured content types and scalable CMS architecture.',
+      skills: ['Drupal', 'Twig'],
+      color: 'from-indigo-500/20',
       img: e_commerce,
-      skills: ['React', 'Tailwind'],
-      color: 'from-purple-500/20',
-      link: '#',
+      link: 'http://250626718972.multi.phpstg.com/',
     },
     {
-      title: 'Portfolio 2026',
-      desc: 'High-performance portfolio showcasing interactive 3D experiences.',
+      title: 'FitMind',
+      desc: 'WordPress website developed with custom theme, optimized performance, and responsive design.',
+      skills: ['WordPress', 'PHP', 'Sass'],
+      color: 'from-orange-500/20',
       img: portfolio,
-      skills: ['React', 'GSAP'],
-      color: 'from-emerald-500/20',
-      link: '#',
+      link: 'https://eduarunyy.multi.phpstg.com/',
     },
   ];
 
@@ -61,8 +61,6 @@ export default function Project() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: item,
-              // On mobile use a later start so the card is well into view.
-              // once:true prevents the card re-hiding if scroll bounces back.
               start: isMobile ? 'top 95%' : 'top 85%',
               toggleActions: isMobile
                 ? 'play none none none'
@@ -78,12 +76,13 @@ export default function Project() {
 
   return (
     <section
+      id="project"
       ref={containerRef}
-      className="project relative z-10 min-h-screen overflow-hidden bg-[#0a0a0a] py-20 md:py-32"
+      className="project relative z-10 min-h-screen overflow-hidden py-20 md:py-32"
     >
       <div className="container mx-auto px-6">
         <div className="mb-16 md:mb-24">
-          <h2 className="text-center text-5xl font-bold tracking-tighter text-white md:text-9xl">
+          <h2 className="text-center text-5xl font-bold tracking-tighter text-slate-900 md:text-9xl">
             Projects<span className="text-blue-500">.</span>
           </h2>
         </div>
@@ -96,7 +95,6 @@ export default function Project() {
                 itemsRef.current[index] = el as HTMLElement;
               }}
               className="group relative flex h-full w-full"
-              style={{ opacity: 0 }}
             >
               <div
                 className={`relative flex flex-1 flex-col overflow-hidden rounded-4xl border border-white/10 bg-linear-to-br ${project.color} to-transparent p-1 backdrop-blur-3xl transition-all duration-500 group-hover:border-blue-500/50`}
@@ -130,6 +128,8 @@ export default function Project() {
                   </div>
 
                   <a
+                    target="_blank"
+                    rel="noopener"
                     href={project.link}
                     className="mt-8 flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-white uppercase"
                   >

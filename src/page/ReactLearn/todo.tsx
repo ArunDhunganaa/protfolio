@@ -68,7 +68,6 @@ export default function TodoApp() {
       </h2>
 
       <div className="container mx-auto flex max-w-2xl flex-1 flex-col gap-4 px-4 py-6 sm:gap-6 sm:px-6 sm:py-10">
-        {/* Progress */}
         <div className="bg-surface border-border rounded-2xl border p-4 sm:p-5">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-text text-sm font-semibold">
@@ -87,7 +86,6 @@ export default function TodoApp() {
           </p>
         </div>
 
-        {/* Input */}
         <div className="bg-surface border-border flex flex-col gap-3 rounded-2xl border p-3 sm:p-4">
           <div className="flex gap-2">
             <input
@@ -97,7 +95,7 @@ export default function TodoApp() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && addTodo()}
             />
-            {/* Visible add button on mobile since Enter may be inconvenient */}
+
             <button
               onClick={addTodo}
               className="bg-primary rounded-xl px-4 text-sm font-semibold text-white transition-all active:scale-95 sm:hidden"
@@ -107,7 +105,6 @@ export default function TodoApp() {
           </div>
         </div>
 
-        {/* Filters */}
         <div className="bg-surface border-border flex gap-1 rounded-xl border p-1">
           {FILTERS.map((f) => (
             <button
@@ -129,7 +126,6 @@ export default function TodoApp() {
           ))}
         </div>
 
-        {/* Todo list */}
         <ul className="space-y-2">
           {filtered.length === 0 && (
             <li className="text-muted py-8 text-center text-sm sm:py-10">
@@ -209,7 +205,6 @@ export default function TodoApp() {
               ) : (
                 <button
                   onClick={() => deleteTodo(todo.id)}
-                  /* Always visible on touch devices; hover-reveal on desktop */
                   className="text-muted shrink-0 transition-all hover:text-rose-500 sm:opacity-0 sm:group-hover:opacity-100"
                   aria-label="delete"
                 >
