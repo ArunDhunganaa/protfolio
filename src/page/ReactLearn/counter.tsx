@@ -39,7 +39,7 @@ export default function Counter() {
     count > 0 ? 'text-accent' : count < 0 ? 'text-rose-400' : 'text-dark-muted';
 
   return (
-    <section className="counter min-h-screen pt-24 pb-10 sm:pt-48 sm:pb-16">
+    <section className="counter min-h-screen pt-24 pb-10 sm:pt-48 sm:pb-16" id="counter-app">
       <h2 className="mb-4 px-4 text-center text-4xl font-bold sm:mb-6 sm:text-6xl">
         Counter app
       </h2>

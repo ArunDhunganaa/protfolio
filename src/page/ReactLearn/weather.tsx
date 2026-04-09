@@ -128,8 +128,11 @@ export default function Weather() {
   const windUnit = unit === 'metric' ? 'm/s' : 'mph';
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      <header className="border-b bg-white px-4 py-4 md:px-6">
+    <section
+      className="min-h-screen bg-gray-50 font-sans text-gray-900"
+      id="weather-app"
+    >
+      <div className="border-b bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-2xl items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             Weather
@@ -143,9 +146,9 @@ export default function Weather() {
             {unit === 'metric' ? '°C → °F' : '°F → °C'}
           </button>
         </div>
-      </header>
+      </div>
 
-      <main className="mx-auto max-w-2xl px-4 py-6 md:py-10">
+      <div className="mx-auto max-w-2xl px-4 py-6 md:py-10">
         <div className="flex flex-col gap-6">
           <div className="flex gap-2">
             <input
@@ -280,7 +283,7 @@ export default function Weather() {
             </div>
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }

@@ -62,7 +62,7 @@ export default function TodoApp() {
     : 0;
 
   return (
-    <section className="todo min-h-screen pt-24 pb-10 sm:pt-48 sm:pb-16">
+    <section className="todo min-h-screen pt-24 pb-10 sm:pt-48 sm:pb-16" id="todo">
       <h2 className="mb-4 px-4 text-center text-4xl font-bold sm:mb-6 sm:text-6xl">
         Todo app
       </h2>

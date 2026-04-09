@@ -167,7 +167,7 @@ export default function Header() {
               Navigation
             </span>
             <ul className="flex flex-col">
-              {['Home', 'Animation', 'React-learning'].map((item) => (
+              {['Home', 'JS', 'React-learning'].map((item) => (
                 <li key={item} className="menu-item overflow-hidden">
                   <NavLink
                     to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}

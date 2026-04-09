@@ -58,7 +58,6 @@ export default function Week4() {
         ) {
           section.style.position = 'fixed';
           section.style.top = '0px';
-          // Always span the full viewport width when fixed
           section.style.left = '0';
           section.style.width = '100vw';
 

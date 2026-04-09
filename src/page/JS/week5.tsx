@@ -51,7 +51,7 @@ export default function Week5() {
   }, []);
 
   return (
-    <section className="week5">
+    <section className="week5 mb-24">
       <div className="mb-8 md:mb-12">
         <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Week 5</h2>
       </div>
