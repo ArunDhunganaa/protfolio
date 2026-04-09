@@ -195,7 +195,7 @@ export default function Weather() {
           {loading && (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-gray-300 p-12">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-              <p className="text-sm text-gray-500">Loading forecast...</p>
+              <p className="text-sm text-gray-500">Loading forecast..</p>
             </div>
           )}
 
