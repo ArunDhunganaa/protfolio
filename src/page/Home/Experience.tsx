@@ -97,13 +97,13 @@ export default function Experience() {
                 <div className="h-2 w-2 rounded-full bg-black" />
               </div>
               <div className="pt-0.5">
-                <p className="font-mono text-xs font-medium tracking-wide text-gray-400 uppercase">
+                <p className="font-mono text-xs font-medium tracking-wide text-gray-600 uppercase">
                   {item.year}
                 </p>
                 <h3 className="mt-1 text-lg font-semibold text-gray-900">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-500">
+                <p className="mt-1 text-sm leading-relaxed text-gray-600">
                   {item.desc}
                 </p>
               </div>

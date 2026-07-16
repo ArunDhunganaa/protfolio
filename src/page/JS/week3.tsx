@@ -1,9 +1,27 @@
+import { useState, useEffect } from 'react';
 import { LottieItem } from '../../component/ui/LottieItem';
-import angryBird from './angry-bird.json';
-import home from './home.json';
-import interaction from './interaction.json';
+
+interface AnimationSet {
+  angryBird: object;
+  home: object;
+  interaction: object;
+}
 
 export default function Week3() {
+  const [data, setData] = useState<AnimationSet | null>(null);
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/lottie/angry-bird.json').then((r) => r.json()),
+      fetch('/lottie/home.json').then((r) => r.json()),
+      fetch('/lottie/interaction.json').then((r) => r.json()),
+    ]).then(([angryBird, home, interaction]) => {
+      setData({ angryBird, home, interaction });
+    });
+  }, []);
+
+  if (!data) return null;
+
   return (
     <section className="flex min-h-[50vh] items-center justify-center pt-24 pb-16 md:pt-48">
       <div className="container mx-auto px-4">
@@ -13,19 +31,19 @@ export default function Week3() {
 
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12">
           <LottieItem
-            animationData={angryBird}
+            animationData={data.angryBird}
             speed={1}
             loop={true}
             direction={1}
           />
           <LottieItem
-            animationData={home}
+            animationData={data.home}
             speed={1.5}
             loop={true}
             direction={1}
           />
           <LottieItem
-            animationData={interaction}
+            animationData={data.interaction}
             speed={0.8}
             loop={true}
             direction={-1}

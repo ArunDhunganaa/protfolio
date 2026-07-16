@@ -53,7 +53,7 @@ export default function Steps() {
               </div>
 
               <div className="px-4">
-                <p className="text-sm text-gray-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="text-sm text-gray-600 opacity-50 transition-opacity duration-300 group-hover:opacity-100">
                   {step.desc}
                 </p>
               </div>
@@ -78,7 +78,7 @@ export default function Steps() {
                 <p className="text-base font-semibold text-gray-700">
                   {step.text}
                 </p>
-                <p className="mt-1 text-sm text-gray-500">{step.desc}</p>
+                <p className="mt-1 text-sm text-gray-600">{step.desc}</p>
               </div>
             </li>
           ))}

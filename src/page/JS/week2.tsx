@@ -38,6 +38,8 @@ export default function Week2() {
         <h2 className="mb-6 text-6xl font-bold">Week 2</h2>
         <svg
           ref={svgRef}
+          role="img"
+          aria-labelledby="week2-svg-title"
           width="100%"
           height="auto"
           viewBox="0 0 1024 1024"
@@ -45,6 +47,7 @@ export default function Week2() {
           preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title id="week2-svg-title">Animated SVG illustration demonstrating GSAP stroke-dashoffset animation</title>
           <path
             d="M512 301.2m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0Z"
             fill="transparent"

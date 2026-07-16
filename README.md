@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Arun Dhungana — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio and interactive learning showcase built with React 19, TypeScript, and GSAP.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript** (strict mode)
+- **Vite 7** — build tool and dev server
+- **Tailwind CSS 4** — utility-first styling
+- **GSAP 3** + `@gsap/react` — scroll and entrance animations
+- **React Router 7** — client-side routing with SPA fallback
+- **Swiper** — hero project carousel
+- **Vitest** + **@testing-library/react** — unit and component tests
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Route | Description |
+|-------|-------------|
+| `/` | Home — Hero, About, Skills, Projects, Experience |
+| `/js` | JavaScript learning modules (Week 2–7) |
+| `/react-learning` | React mini-apps: Counter, Todo, Weather |
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env        # add VITE_OPENWEATHER_API key
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `VITE_OPENWEATHER_API` | Yes (Weather page) | OpenWeatherMap API key |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Get a free key at [openweathermap.org/api](https://openweathermap.org/api).
+
+## Scripts
+
+```bash
+npm run dev      # start dev server at localhost:5173
+npm run build    # TypeScript check + production build
+npm run preview  # serve the production build locally
+npm run lint     # ESLint
+npm test         # run all unit tests (watch mode)
+npm test -- --run  # run all tests once (CI mode)
+```
+
+## Project Structure
+
+```
+src/
+├── component/
+│   ├── ui/          # Header, Footer, PrimaryButton, OutlineButton
+│   └── animations/  # GSAP utility functions
+├── lib/             # gsap plugin setup, shared types
+└── page/
+    ├── Home/        # Portfolio sections (Hero, About, Skills, …)
+    ├── JS/          # JavaScript exercises
+    ├── ReactLearn/  # React mini-apps + tests
+    └── 404/         # Fallback page
+```
+
+## Deploy
+
+Deployed on **Vercel**. The `public/_redirects` file routes all paths to `index.html` for SPA
+client-side navigation.
+
+```bash
+vercel --prod
 ```

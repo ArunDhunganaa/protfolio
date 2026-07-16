@@ -2,8 +2,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { PrimaryButton } from '../../component/ui/PrimaryButton';
 import { OutlineButton } from '../../component/ui/OutlineButton';
-import graphiccell from '../../assets/graphic-cell.png';
-import brownmine from '../../assets/brownmine.png';
+import graphiccell from '../../assets/graphic-cell.webp';
+import brownmine from '../../assets/brownmine.webp';
 import { useGSAP } from '@gsap/react';
 import gsap from '../../lib/gsap';
 import { useRef } from 'react';
@@ -112,13 +112,13 @@ export default function Hero() {
         <div className="relative z-10 container mx-auto px-6">
           <div className="flex flex-col gap-14 md:flex-row md:items-center md:gap-10 lg:gap-20">
             <div className="flex flex-col md:w-[52%]">
-              <h1 className="mb-8 text-4xl leading-[0.92] font-black tracking-tight text-stone-900 md:text-6xl">
-                <div className="overflow-hidden">
+              <h1 className="mb-8 text-4xl leading-[0.92] font-black tracking-tight text-stone-900 md:text-6xl" aria-label="Arun Dhungana">
+                <div aria-hidden="true" className="overflow-hidden">
                   <span className="hero-word inline-block text-stone-300">
-                    Iam
+                    I'm
                   </span>
                 </div>
-                <div className="overflow-hidden">
+                <div aria-hidden="true" className="overflow-hidden">
                   <span className="hero-word inline-block">Arun</span>
                 </div>
               </h1>
@@ -130,7 +130,7 @@ export default function Hero() {
                   </p>
                 </div>
                 <div className="overflow-hidden">
-                  <p className="hero-sub-line max-w-sm text-sm leading-relaxed text-stone-400 sm:text-base">
+                  <p className="hero-sub-line max-w-sm text-sm leading-relaxed text-stone-600 sm:text-base">
                     I craft modern, interactive web experiences — fast,
                     accessible, and obsessively refined.
                   </p>
@@ -139,7 +139,10 @@ export default function Hero() {
 
               <div className="hero-ctas mb-12 flex flex-wrap gap-3">
                 <PrimaryButton text="View my work" href="#project" />
-                <OutlineButton text="Get in touch" href="mailto:a.d.since03@gmail.com" />
+                <OutlineButton
+                  text="Get in touch"
+                  href="mailto:a.d.since03@gmail.com"
+                />
               </div>
 
               <div className="flex items-center gap-6 border-t border-stone-200 pt-6">
@@ -184,6 +187,7 @@ export default function Hero() {
                         <img
                           src={src}
                           alt={label}
+                          fetchPriority="high"
                           className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />

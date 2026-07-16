@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Github, Linkedin, X, Menu as MenuIcon } from 'lucide-react';
-import profile from '../../assets/profile.jpg';
+import profile from '../../assets/profile.webp';
 
 gsap.registerPlugin(useGSAP);
 
@@ -124,6 +124,8 @@ export default function Header() {
       <div className="pointer-events-none fixed top-0 left-0 z-100 flex h-20 w-full items-center justify-between px-6 md:px-12">
         <button
           onClick={handleToggle}
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
           className="group pointer-events-auto h-8 cursor-pointer overflow-hidden px-2"
         >
           <div
@@ -158,6 +160,7 @@ export default function Header() {
             <img
               src={profile}
               alt="Profile"
+              loading="lazy"
               className="h-full w-full object-cover opacity-50 grayscale"
             />
           </div>
@@ -191,18 +194,18 @@ export default function Header() {
               <a
                 href="https://www.linkedin.com/in/arun-dhungana-151047229/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="text-zinc-400 transition-colors hover:text-white"
-                aria-label="linkedin"
+                aria-label="LinkedIn profile"
               >
                 <Linkedin size={24} />
               </a>
               <a
                 href="https://github.com/ArunDhunganaa"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="text-zinc-400 transition-colors hover:text-white"
-                aria-label="github"
+                aria-label="GitHub profile"
               >
                 <Github size={24} />
               </a>

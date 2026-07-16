@@ -1,65 +1,50 @@
 import { useState } from 'react';
-
-type Filter = 'All' | 'Active' | 'Completed';
-
-interface Todo {
-  id: number;
-  text: string;
-  done: boolean;
-}
+import {
+  type Filter,
+  type Todo,
+  addTodo as addTodoHelper,
+  toggleTodo as toggleTodoHelper,
+  deleteTodo as deleteTodoHelper,
+  clearCompleted as clearCompletedHelper,
+  saveEdit as saveEditHelper,
+  filterTodos,
+  getProgress,
+} from './todoHelpers';
 
 const FILTERS: Filter[] = ['All', 'Active', 'Completed'];
 
 const INITIAL_TODOS: Todo[] = [
-  { id: 1, text: 'Build Counter App', done: true },
-  { id: 2, text: 'Build Todo List', done: false },
-  { id: 3, text: 'Build Weather App', done: false },
+  { id: '1', text: 'Build Counter App', done: true },
+  { id: '2', text: 'Build Todo List', done: false },
+  { id: '3', text: 'Build Weather App', done: false },
 ];
 
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>(INITIAL_TODOS);
   const [input, setInput] = useState<string>('');
   const [filter, setFilter] = useState<Filter>('All');
-  const [editId, setEditId] = useState<number | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
   const [editText, setEditText] = useState<string>('');
 
   const addTodo = () => {
     if (!input.trim()) return;
-    setTodos((prev) => [
-      ...prev,
-      { id: Date.now(), text: input.trim(), done: false },
-    ]);
+    setTodos((prev) => addTodoHelper(prev, input));
     setInput('');
   };
 
-  const toggleTodo = (id: number) =>
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
-    );
+  const toggleTodo = (id: string) => setTodos((prev) => toggleTodoHelper(prev, id));
+  const deleteTodo = (id: string) => setTodos((prev) => deleteTodoHelper(prev, id));
+  const clearCompleted = () => setTodos((prev) => clearCompletedHelper(prev));
 
-  const deleteTodo = (id: number) =>
-    setTodos((prev) => prev.filter((t) => t.id !== id));
-
-  const clearCompleted = () => setTodos((prev) => prev.filter((t) => !t.done));
-
-  const saveEdit = (id: number) => {
+  const saveEdit = (id: string) => {
     if (!editText.trim()) return;
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, text: editText.trim() } : t)),
-    );
+    setTodos((prev) => saveEditHelper(prev, id, editText));
     setEditId(null);
   };
 
-  const filtered = todos.filter((t) => {
-    if (filter === 'Active') return !t.done;
-    if (filter === 'Completed') return t.done;
-    return true;
-  });
-
+  const filtered = filterTodos(todos, filter);
   const completedCount = todos.filter((t) => t.done).length;
-  const pct = todos.length
-    ? Math.round((completedCount / todos.length) * 100)
-    : 0;
+  const pct = getProgress(todos);
 
   return (
     <section className="todo min-h-screen pt-24 pb-10 sm:pt-48 sm:pb-16" id="todo">
@@ -75,7 +60,14 @@ export default function TodoApp() {
             </span>
             <span className="text-primary text-sm font-bold">{pct}%</span>
           </div>
-          <div className="bg-border h-2 w-full overflow-hidden rounded-full">
+          <div
+            className="bg-border h-2 w-full overflow-hidden rounded-full"
+            role="progressbar"
+            aria-valuenow={pct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Task completion progress"
+          >
             <div
               className="bg-primary h-full rounded-full transition-all duration-500"
               style={{ width: `${pct}%` }}
@@ -97,7 +89,9 @@ export default function TodoApp() {
             />
 
             <button
+              type="button"
               onClick={addTodo}
+              aria-label="Add task"
               className="bg-primary rounded-xl px-4 text-sm font-semibold text-white transition-all active:scale-95 sm:hidden"
             >
               Add
@@ -109,7 +103,9 @@ export default function TodoApp() {
           {FILTERS.map((f) => (
             <button
               key={f}
+              type="button"
               onClick={() => setFilter(f)}
+              aria-pressed={filter === f}
               className={`flex-1 rounded-lg py-2 text-xs font-semibold transition-all duration-150 sm:text-sm ${
                 filter === f
                   ? 'bg-primary text-white shadow-sm'
@@ -144,7 +140,9 @@ export default function TodoApp() {
               }`}
             >
               <button
+                type="button"
                 onClick={() => toggleTodo(todo.id)}
+                aria-label={`${todo.done ? 'Mark as incomplete' : 'Mark as complete'}: ${todo.text}`}
                 className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
                   todo.done
                     ? 'bg-accent border-accent'
@@ -170,7 +168,7 @@ export default function TodoApp() {
 
               {editId === todo.id ? (
                 <input
-                  title="task"
+                  title="Edit task"
                   autoFocus
                   className="bg-bg border-primary text-text flex-1 rounded-lg border px-2 py-1 text-sm focus:outline-none"
                   value={editText}
@@ -197,16 +195,19 @@ export default function TodoApp() {
 
               {editId === todo.id ? (
                 <button
+                  type="button"
                   onClick={() => saveEdit(todo.id)}
+                  aria-label="Save edit"
                   className="text-accent shrink-0 text-xs font-bold hover:opacity-70"
                 >
                   Save
                 </button>
               ) : (
                 <button
+                  type="button"
                   onClick={() => deleteTodo(todo.id)}
+                  aria-label={`Delete ${todo.text}`}
                   className="text-muted shrink-0 transition-all hover:text-rose-500 sm:opacity-0 sm:group-hover:opacity-100"
-                  aria-label="delete"
                 >
                   <svg
                     className="h-4 w-4"
@@ -230,7 +231,9 @@ export default function TodoApp() {
         {completedCount > 0 && (
           <div className="flex justify-end">
             <button
+              type="button"
               onClick={clearCompleted}
+              aria-label={`Clear ${completedCount} completed tasks`}
               className="text-dark text-xs transition-colors hover:text-rose-500"
             >
               Clear {completedCount} completed

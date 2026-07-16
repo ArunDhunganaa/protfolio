@@ -91,6 +91,12 @@ export default function Weather() {
   const fetchWeather = useCallback(
     async (cityName: string) => {
       if (!cityName.trim()) return;
+
+      if (!API_KEY) {
+        setError('API key not configured. Add VITE_OPENWEATHER_API to your .env file.');
+        return;
+      }
+
       setLoading(true);
       setError(null);
       try {
@@ -98,13 +104,20 @@ export default function Weather() {
           `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&appid=${API_KEY}&units=${unit}`,
         );
         if (!res.ok) {
-          if (res.status === 404) throw new Error('City not found.');
-          throw new Error('Something went wrong.');
+          if (res.status === 401) throw new Error('Invalid API key. Check your VITE_OPENWEATHER_API value.');
+          if (res.status === 404) throw new Error('City not found. Try a different spelling.');
+          if (res.status === 429) throw new Error('Too many requests. Please wait a moment and try again.');
+          if (res.status >= 500) throw new Error('Weather service unavailable. Try again later.');
+          throw new Error(`Request failed (${res.status}).`);
         }
         const data: WeatherData = await res.json();
         setWeather(data);
       } catch (err) {
-        setError((err as Error).message);
+        if (err instanceof TypeError) {
+          setError('Network error. Check your internet connection.');
+        } else {
+          setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+        }
         setWeather(null);
       } finally {
         setLoading(false);

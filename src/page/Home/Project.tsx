@@ -123,17 +123,19 @@ export default function Project() {
                     <img
                       src={project.img}
                       alt={project.title}
+                      loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
 
                   <a
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href={project.link}
+                    aria-label={`Visit ${project.title}`}
                     className="mt-8 flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-white uppercase"
                   >
-                    <span>Visit</span>
+                    <span aria-hidden="true">Visit</span>
                     <div className="h-px w-6 bg-blue-500 transition-all group-hover:w-10" />
                   </a>
                 </div>

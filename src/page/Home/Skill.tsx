@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 import gsap from '../../lib/gsap';
 
 import wordpress_l from '../../assets/wordpress.png';
-import react_l from '../../assets/react.png';
+import react_l from '../../assets/react.svg';
 import webflow_l from '../../assets/webflow.png';
 import html_sass_l from '../../assets/html-sass.jpg';
 import drupal_l from '../../assets/drupal.webp';
 
 import wordpress from '../../assets/wordpress.jpg';
-import react from '../../assets/react-e.png';
+import react from '../../assets/react-e.webp';
 import webflow from '../../assets/webflow.webp';
 import html_sass from '../../assets/html.jpeg';
 import drupal from '../../assets/drupal.jpg';
@@ -107,6 +107,7 @@ export default function Skill() {
                 <img
                   src={s.img}
                   alt={s.title}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -119,7 +120,7 @@ export default function Skill() {
               <h3 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl">
                 {s.title}
               </h3>
-              <p className="leading-relaxed text-gray-500">{s.desc}</p>
+              <p className="leading-relaxed text-gray-600">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -134,6 +135,7 @@ export default function Skill() {
               <img
                 key={i}
                 src={s.img}
+                loading="lazy"
                 className="skill-img h-full w-full object-cover"
                 alt=""
               />
