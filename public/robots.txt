@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arundhungana.netlify.app/sitemap.xml
+Sitemap: https://arundhungana-ten.vercel.app/sitemap.xml
