@@ -12,96 +12,68 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    const ctx = gsap.context(() => {
-      // Tag pill
-      gsap.fromTo(
-        '.hero-tag',
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 },
-      );
-      // Each heading word
-      gsap.fromTo(
-        '.hero-word',
-        { opacity: 0, y: 48 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          ease: 'power4.out',
-          stagger: 0.13,
-          delay: 0.25,
-        },
-      );
-      // Subtitle lines
-      gsap.fromTo(
-        '.hero-sub-line',
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.65,
-          ease: 'power3.out',
-          stagger: 0.1,
-          delay: 0.6,
-        },
-      );
-      // Buttons
-      gsap.fromTo(
-        '.hero-ctas',
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', delay: 0.85 },
-      );
-      // Stats
-      gsap.fromTo(
-        '.hero-stat',
-        { opacity: 0, y: 12 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: 'power3.out',
-          stagger: 0.08,
-          delay: 1.0,
-        },
-      );
-      // Card
-      gsap.fromTo(
-        '.hero-card',
-        { opacity: 0, y: 40, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.0,
-          ease: 'power3.out',
-          delay: 0.35,
-        },
-      );
-      // Badge
-      gsap.fromTo(
-        '.hero-badge',
-        { opacity: 0, x: -16, y: 8 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.6,
-          ease: 'back.out(1.6)',
-          delay: 1.15,
-        },
-      );
-      // Idle float
-      gsap.to('.hero-card', {
-        y: '-=8',
-        duration: 3.2,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-        delay: 1.4,
-      });
-    }, heroRef);
-    return () => ctx.revert();
-  }, []);
+    gsap.fromTo(
+      '.hero-word',
+      { opacity: 0, y: 48 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: 'power4.out',
+        stagger: 0.13,
+        delay: 0.25,
+      },
+    );
+    gsap.fromTo(
+      '.hero-sub-line',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.65,
+        ease: 'power3.out',
+        stagger: 0.1,
+        delay: 0.6,
+      },
+    );
+    gsap.fromTo(
+      '.hero-ctas',
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', delay: 0.85 },
+    );
+    gsap.fromTo(
+      '.hero-stat',
+      { opacity: 0, y: 12 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 1.0,
+      },
+    );
+    gsap.fromTo(
+      '.hero-card',
+      { opacity: 0, y: 40, scale: 0.96 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.0,
+        ease: 'power3.out',
+        delay: 0.35,
+      },
+    );
+    gsap.to('.hero-card', {
+      y: '-=8',
+      duration: 3.2,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+      delay: 1.4,
+    });
+  }, { scope: heroRef });
 
   return (
     <section
@@ -182,12 +154,12 @@ export default function Hero() {
                     { src: brownmine, label: 'Brownmine', tag: 'Frontend' },
                   ].map(({ src, label, tag }) => (
                     <SwiperSlide key={label}>
-                      <div className="group relative overflow-hidden">
+                      <div className="group relative aspect-video overflow-hidden">
                         <img
                           src={src}
                           alt={label}
                           fetchPriority="high"
-                          className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
                         <div className="absolute right-0 bottom-0 left-0 p-5 sm:p-6">

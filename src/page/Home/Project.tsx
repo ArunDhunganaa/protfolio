@@ -1,12 +1,9 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from '../../lib/gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import corporate_cms from '../../assets/corporate_cms.webp';
 import e_commerce from '../../assets/e_commerce.webp';
 import portfolio from '../../assets/portfolio.webp';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Project() {
   const containerRef = useRef<HTMLDivElement>(null);

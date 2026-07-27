@@ -30,7 +30,7 @@ export default function About() {
       color: 'var(--color-primary)',
       stagger: { amount: 0.3, from: 'random' },
     });
-  });
+  }, { scope: containerRef });
 
   return (
     <section

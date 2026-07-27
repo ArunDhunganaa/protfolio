@@ -2,7 +2,6 @@ import Week2 from './week2';
 import Week3 from './week3';
 import Week4 from './week4';
 import Week5 from './week5';
-import Week7 from './week7';
 
 export default function Animation() {
   return (
@@ -15,7 +14,6 @@ export default function Animation() {
         <Week3 />
         <Week4 />
         <Week5 />
-        <Week7 />
       </div>
     </div>
   );

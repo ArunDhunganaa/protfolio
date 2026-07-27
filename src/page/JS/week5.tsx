@@ -16,15 +16,15 @@ export default function Week5() {
   useGSAP(() => {
     const panels = gsap.utils.toArray<HTMLElement>('.panel');
 
-    const headerOffset = window.innerWidth < 768 ? '60px' : '103px';
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: `top ${headerOffset}`,
+        start: () => `top ${(document.querySelector('header')?.getBoundingClientRect().height ?? 80)}px`,
         end: `+=${panels.length * 100}%`,
         scrub: true,
         pin: true,
+        pinType: 'transform',
+        invalidateOnRefresh: true,
         snap: {
           snapTo: 1 / panels.length,
           duration: 0.4,
@@ -48,7 +48,7 @@ export default function Week5() {
         },
       );
     });
-  }, []);
+  }, { scope: containerRef });
 
   return (
     <section className="week5 mb-24">

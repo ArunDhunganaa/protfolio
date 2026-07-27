@@ -58,10 +58,10 @@ export default function Week4() {
           relativeScroll >= sectionStart &&
           relativeScroll < (SECTIONS.length - 1) * vh
         ) {
-          section.style.position = 'fixed';
-          section.style.top = '0px';
+          section.style.position = 'absolute';
+          section.style.top = `${relativeScroll}px`;
           section.style.left = '0';
-          section.style.width = '100vw';
+          section.style.width = '100%';
 
           if (mainText) {
             mainText.style.transform = `translateY(${progress * -200}px)`;

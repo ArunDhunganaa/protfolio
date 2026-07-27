@@ -7,13 +7,13 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
+    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react':  ['react', 'react-dom', 'react-router', 'react-router-dom'],
-          'vendor-gsap':   ['gsap', '@gsap/react'],
+          'vendor-react':  ['react', 'react-dom', 'react-dom/client', 'react-router', 'react-router-dom'],
+          'vendor-gsap':   ['gsap', '@gsap/react', 'gsap/SplitText', 'gsap/ScrollToPlugin', 'gsap/ScrollTrigger'],
           'vendor-swiper': ['swiper'],
-          'vendor-lottie': ['lottie-web'],
         },
       },
     },

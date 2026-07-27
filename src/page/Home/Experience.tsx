@@ -30,29 +30,32 @@ export default function Experience() {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (window.innerWidth < 768) return;
+    const mm = gsap.matchMedia();
 
-    const track = timelineRef.current;
-    const section = sectionRef.current;
-    if (!track || !section) return;
+    mm.add('(min-width: 768px)', () => {
+      const track = timelineRef.current;
+      const section = sectionRef.current;
+      if (!track || !section) return;
 
-    const scrollDistance = track.scrollWidth - window.innerWidth;
-    if (scrollDistance <= 0) return;
+      const scrollDistance = track.scrollWidth - window.innerWidth;
+      if (scrollDistance <= 0) return;
 
-    gsap.to(track, {
-      x: -scrollDistance,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        pin: true,
-        pinSpacing: true,
-        scrub: 1,
-        start: 'top top',
-        end: () => `+=${scrollDistance}`,
-        invalidateOnRefresh: true,
-      },
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          pinSpacing: true,
+          scrub: 1,
+          start: () => `top ${(document.querySelector('header')?.getBoundingClientRect().height ?? 80)}px`,
+          end: () => `+=${track.scrollWidth - window.innerWidth}`,
+          invalidateOnRefresh: true,
+          pinType: 'transform',
+        },
+      });
     });
-  });
+  }, { revertOnUpdate: true });
 
   return (
     <>

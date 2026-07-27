@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from '../../lib/gsap';
+import { ScrollTrigger } from '../../lib/gsap';
 
 import wordpress_l from '../../assets/wordpress.png';
 import react_l from '../../assets/react.svg';
@@ -25,7 +26,6 @@ export default function Skill() {
       mm.add('(min-width: 768px)', () => {
         const images = gsap.utils.toArray<HTMLElement>('.skill-img');
         const items = gsap.utils.toArray<HTMLElement>('.skill-item');
-        const headerHeight = 103;
 
         gsap.set(images, {
           position: 'absolute',
@@ -38,11 +38,13 @@ export default function Skill() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: `top ${headerHeight}px`,
+            start: () => `top ${(document.querySelector('header')?.getBoundingClientRect().height ?? 80)}px`,
             end: 'bottom bottom',
             scrub: 1.5,
             pin: pinContainerRef.current,
             pinSpacing: true,
+            invalidateOnRefresh: true,
+            pinType: 'transform',
           },
         });
 
@@ -54,12 +56,14 @@ export default function Skill() {
             `+=${i * 0.5}`,
           );
         });
-
-        return () => mm.revert();
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef, revertOnUpdate: true },
   );
+
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, []);
 
   const skills = [
     {
@@ -128,7 +132,7 @@ export default function Skill() {
         <div
           ref={pinContainerRef}
           className="hidden w-1/2 items-center justify-center md:flex"
-          style={{ height: `calc(100vh - 103px)` }}
+          style={{ height: `calc(100vh - 80px)` }}
         >
           <div className="relative aspect-square w-full max-w-125 overflow-hidden rounded-xl shadow-2xl">
             {skills.map((s, i) => (

@@ -41,7 +41,6 @@ export default function Week2() {
           role="img"
           aria-labelledby="week2-svg-title"
           width="100%"
-          height="auto"
           viewBox="0 0 1024 1024"
           className="icon block w-full max-w-[400px] sm:max-w-[300px] md:max-w-[400px]"
           preserveAspectRatio="xMidYMid meet"
