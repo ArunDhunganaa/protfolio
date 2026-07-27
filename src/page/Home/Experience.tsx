@@ -58,6 +58,7 @@ export default function Experience() {
     <>
       <section
         ref={sectionRef}
+        aria-label="Education and experience timeline"
         className="experience hidden overflow-hidden md:block"
       >
         <div className="container mx-auto px-6 py-16">
@@ -83,7 +84,7 @@ export default function Experience() {
         </div>
       </section>
 
-      <section className="experience px-6 py-16 md:hidden">
+      <section aria-label="Education and experience" className="experience px-6 py-16 md:hidden">
         <h2 className="mb-12 text-center text-xl font-bold lg:text-4xl">
           Education/Experience
         </h2>

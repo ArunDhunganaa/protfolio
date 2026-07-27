@@ -80,7 +80,11 @@ export default function TodoApp() {
 
         <div className="bg-surface border-border flex flex-col gap-3 rounded-2xl border p-3 sm:p-4">
           <div className="flex gap-2">
+            <label htmlFor="new-todo" className="sr-only">
+              New task
+            </label>
             <input
+              id="new-todo"
               className="bg-bg border-border text-text placeholder:text-muted focus:border-primary flex-1 rounded-xl border px-3 py-2.5 text-sm transition-colors focus:outline-none sm:px-4 sm:py-3"
               placeholder="Add a new task..."
               value={input}

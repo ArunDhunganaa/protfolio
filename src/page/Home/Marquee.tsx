@@ -14,7 +14,7 @@ export default function Marquee({
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="marquee-item relative flex flex-none items-center px-6">
             <a href="mailto:a.d.since03@gmail.com" className={i === 0 ? 'block' : ''} tabIndex={-1}>
-              Lets work together!
+              Let's work together!
             </a>
           </div>
         ))}
@@ -25,7 +25,7 @@ export default function Marquee({
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="marquee-item relative flex flex-none items-center px-6">
             <a href="mailto:a.d.since03@gmail.com" tabIndex={-1}>
-              Lets work together!
+              Let's work together!
             </a>
           </div>
         ))}

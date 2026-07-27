@@ -4,7 +4,7 @@ import gsap from '../../lib/gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import corporate_cms from '../../assets/corporate_cms.webp';
 import e_commerce from '../../assets/e_commerce.webp';
-import portfolio from '../../assets/portfolio.jpg';
+import portfolio from '../../assets/portfolio.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 

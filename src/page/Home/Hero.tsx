@@ -104,11 +104,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <>
-      <section
-        ref={heroRef}
-        className="relative overflow-hidden bg-stone-50 pt-28 pb-20 sm:pt-32 lg:pt-40 lg:pb-28"
-      >
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden bg-stone-50 pt-28 pb-20 sm:pt-32 lg:pt-40 lg:pb-28"
+    >
         <div className="relative z-10 container mx-auto px-6">
           <div className="flex flex-col gap-14 md:flex-row md:items-center md:gap-10 lg:gap-20">
             <div className="flex flex-col md:w-[52%]">
@@ -207,7 +206,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </section>
-    </>
+    </section>
   );
 }

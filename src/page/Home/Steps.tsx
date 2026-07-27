@@ -28,13 +28,14 @@ export default function Steps() {
       : 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%, 10% 50%)';
 
   return (
-    <section className="step bg-gray-100 py-16">
+    <section aria-label="My process" className="step bg-gray-100 py-16">
       <div className="container mx-auto px-6">
-        <div className="hidden items-start md:flex">
+        {/* Desktop layout */}
+        <ol className="hidden items-start md:flex" aria-label="Development process steps">
           {steps.map((step, index) => (
-            <div
+            <li
               key={step.id}
-              className="group flex w-1/4 cursor-default flex-col items-center gap-3 text-center"
+              className="group flex w-1/4 cursor-default flex-col items-center gap-3 text-center list-none"
               style={{ marginLeft: index !== 0 ? '-1.5%' : '0' }}
             >
               <p className="min-h-14 text-lg font-semibold text-gray-700">
@@ -45,6 +46,7 @@ export default function Steps() {
                 <div
                   className="flex h-full w-full items-center justify-center bg-blue-600 transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-700"
                   style={{ clipPath: getPath(index) }}
+                  aria-hidden="true"
                 >
                   <span className="text-2xl font-bold text-white">
                     {index + 1}
@@ -57,21 +59,25 @@ export default function Steps() {
                   {step.desc}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
 
+        {/* Mobile layout */}
         <ol className="flex flex-col gap-0 md:hidden">
           {steps.map((step, index) => (
             <li key={step.id} className="flex gap-4">
               <div className="flex flex-col items-center">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600">
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600"
+                  aria-hidden="true"
+                >
                   <span className="text-base font-bold text-white">
                     {index + 1}
                   </span>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="my-1 w-0.5 flex-1 bg-blue-200" />
+                  <div className="my-1 w-0.5 flex-1 bg-blue-200" aria-hidden="true" />
                 )}
               </div>
               <div className="pt-1.5 pb-8">

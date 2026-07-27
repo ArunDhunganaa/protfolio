@@ -17,6 +17,8 @@ export default function Week4() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const handleResize = () => setVh(window.innerHeight);
     window.addEventListener('resize', handleResize);
 
@@ -89,7 +91,9 @@ export default function Week4() {
       rafId = requestAnimationFrame(update);
     };
 
-    rafId = requestAnimationFrame(update);
+    if (!reducedMotion) {
+      rafId = requestAnimationFrame(update);
+    }
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(rafId);

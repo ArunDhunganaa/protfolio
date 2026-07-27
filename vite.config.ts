@@ -24,6 +24,3 @@ export default defineConfig({
     setupFiles: ['./src/test-setup.ts'],
   },
 });
-
-// SVG coordinate system, paths, viewBox, transforms
-// Animate SVG manually (stroke-dasharray, morphs)

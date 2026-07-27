@@ -35,18 +35,21 @@ export default function Week3() {
             speed={1}
             loop={true}
             direction={1}
+            label="Angry bird Lottie animation"
           />
           <LottieItem
             animationData={data.home}
             speed={1.5}
             loop={true}
             direction={1}
+            label="Home icon Lottie animation"
           />
           <LottieItem
             animationData={data.interaction}
             speed={0.8}
             loop={true}
             direction={-1}
+            label="Interaction Lottie animation"
           />
         </div>
       </div>

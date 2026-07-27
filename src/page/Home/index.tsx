@@ -9,14 +9,14 @@ import Steps from './Steps';
 export default function Home() {
   return (
     <>
-      <Hero></Hero>
-      <About></About>
-      <Marquee></Marquee>
-      <Marquee rotation={'reverse'}></Marquee>
-      <Skill></Skill>
-      <Project></Project>
-      <Steps></Steps>
-      <Experience></Experience>
+      <Hero />
+      <About />
+      <Marquee />
+      <Marquee rotation="reverse" />
+      <Skill />
+      <Project />
+      <Steps />
+      <Experience />
     </>
   );
 }

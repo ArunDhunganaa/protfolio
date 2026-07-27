@@ -154,6 +154,7 @@ export default function Weather() {
             onClick={() =>
               setUnit((u) => (u === 'metric' ? 'imperial' : 'metric'))
             }
+            aria-label={unit === 'metric' ? 'Switch to Fahrenheit' : 'Switch to Celsius'}
             className="rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-bold transition-all hover:bg-gray-50 active:scale-95"
           >
             {unit === 'metric' ? '°C → °F' : '°F → °C'}
@@ -164,7 +165,11 @@ export default function Weather() {
       <div className="mx-auto max-w-2xl px-4 py-6 md:py-10">
         <div className="flex flex-col gap-6">
           <div className="flex gap-2">
+            <label htmlFor="city-search" className="sr-only">
+              Search city
+            </label>
             <input
+              id="city-search"
               className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:ring-2 focus:ring-blue-500 focus:outline-none"
               placeholder="Search city..."
               value={query}
@@ -200,7 +205,11 @@ export default function Weather() {
           </div>
 
           {error && (
-            <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+            >
               {error}
             </div>
           )}

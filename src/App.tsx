@@ -19,7 +19,13 @@ function App() {
       </a>
       <Header />
       <main id="main-content">
-        <Suspense fallback={<div className="min-h-screen" />}>
+        <Suspense
+          fallback={
+            <div className="flex min-h-screen items-center justify-center" aria-label="Loading page" role="status">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            </div>
+          }
+        >
           <Routes>
             <Route path="/"              element={<Home />} />
             <Route path="js"             element={<JS />}>

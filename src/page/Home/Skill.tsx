@@ -1,27 +1,28 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 import gsap from '../../lib/gsap';
 
 import wordpress_l from '../../assets/wordpress.png';
 import react_l from '../../assets/react.svg';
 import webflow_l from '../../assets/webflow.png';
-import html_sass_l from '../../assets/html-sass.jpg';
+import html_sass_l from '../../assets/html-sass.webp';
 import drupal_l from '../../assets/drupal.webp';
 
-import wordpress from '../../assets/wordpress.jpg';
+import wordpress from '../../assets/wordpress-full.webp';
 import react from '../../assets/react-e.webp';
 import webflow from '../../assets/webflow.webp';
-import html_sass from '../../assets/html.jpeg';
-import drupal from '../../assets/drupal.jpg';
+import html_sass from '../../assets/html.webp';
+import drupal from '../../assets/drupal-full.webp';
 
 export default function Skill() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const pinContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const mm = gsap.matchMedia();
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
 
-    mm.add('(min-width: 768px)', () => {
-      const ctx = gsap.context(() => {
+      mm.add('(min-width: 768px)', () => {
         const images = gsap.utils.toArray<HTMLElement>('.skill-img');
         const items = gsap.utils.toArray<HTMLElement>('.skill-item');
         const headerHeight = 103;
@@ -53,13 +54,12 @@ export default function Skill() {
             `+=${i * 0.5}`,
           );
         });
-      }, sectionRef);
 
-      return () => ctx.revert();
-    });
-
-    return () => mm.revert();
-  }, []);
+        return () => mm.revert();
+      });
+    },
+    { scope: sectionRef },
+  );
 
   const skills = [
     {
